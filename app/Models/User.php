@@ -44,6 +44,23 @@ class User extends Authenticatable
     ];
 
     
+    # a user can have many comments
+    public function comments() {
+        return $this->hasMany(Comments::class); 
+    }
+
+    # a user can have many likes on different posts
+    public function likes(){
+        return $this->hasMany(Likes::class);
+    }
+
+    # a user can have many bookmarks
+    public function bookmarks(){
+        return $this->hasMany(Bookmarks::class);
+    }
+
+
+    # a user can have many posts
     public function posts() {
         return $this->hasMany(Posts::class);
     }

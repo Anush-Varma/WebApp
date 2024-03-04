@@ -5,19 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Likes extends Model
+class Comments extends Model
 {
     use HasFactory;
 
-
-    # a like belongs to one post 
-    public function post(){
-        return $this->belongsTo(Posts::class);
-    }
-
-    # one like belongs to one user for a post
+    
+    # each comment belongs to one user 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    # each comment belongs to one post
+    public function post(){
+        return $this->belongsTo(Posts::class);
     }
 
 }
