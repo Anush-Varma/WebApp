@@ -3,12 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\User;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Posts>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Comments>
  */
-class PostsFactory extends Factory
+class CommentsFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,12 +17,7 @@ class PostsFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
-            'description' => fake()->text(),
-            'title' => fake()->text(),
+            
         ];
     }
-    
-
-
 }

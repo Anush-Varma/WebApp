@@ -12,9 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('bookmarks', function (Blueprint $table) {
-            $table->primary('post_id');
+            $table->primary(['post_id', 'user_id']);
             $table->foreignId('user_id');
-            $table->timestamps();
+            $table->foreignId('post_id');
+            
 
             
             $table->foreign('post_id')->references('id')->on('posts')
@@ -24,7 +25,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade')->onUpdate('cascade');
 
-
+                $table->timestamps();
         });
     }
 

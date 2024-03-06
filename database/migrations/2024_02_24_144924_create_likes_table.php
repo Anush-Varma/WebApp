@@ -15,7 +15,7 @@ return new class extends Migration
             $table->primary(['user_id', 'post_id']);
             $table->foreignId('user_id');
             $table->foreignId('post_id');
-            $table->timestamps();
+            
 
 
             $table->foreign('user_id')->references('id')->on('users')
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreign('post_id')->references('id')->on('posts')
                 ->onDelete('cascade')->onUpdate('cascade');
 
-
+                $table->timestamps();
             
         });
     }

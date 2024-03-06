@@ -16,10 +16,9 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->string('title');
             $table->string('description');
+            
             $table->timestamps();
-
-
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             
         });
     }
