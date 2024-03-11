@@ -3,9 +3,11 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Factories\CommentsFactory;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Posts;
+use App\Models\Comments;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,15 +16,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        
-        $user = User::factory()->create();
-
-        $posts = Posts::factory()
-                    ->count(3)
-                    ->for($user)
-                    ->create();
-        
 
 
+        $users = User::factory()->count(3)->create();
+        $posts = Posts::factory()->count(3)->create();
+
+        $comments = Comments::factory()->count(4)->create([
+            'user_id' => $users->random()->id,
+            'post_id' => function () use ($posts) {
+                return $posts->random()->id;
+            },
+        ]);
     }
 }

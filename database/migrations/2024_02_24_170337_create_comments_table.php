@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('post_id');
             $table->foreignId('user_id');
-            $table->string('Title');
-            $table->string('Description');
+            $table->string('title');
+            $table->string('description');
             
 
 

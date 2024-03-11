@@ -18,7 +18,7 @@ class PostsFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
+            'user_id' => $this->faker->randomElement(User::pluck('id')),
             'description' => fake()->text(),
             'title' => fake()->text(),
         ];

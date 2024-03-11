@@ -1,0 +1,29 @@
+[90m= [39m[34;4mIlluminate\Database\Eloquent\Collection[39;24m {#5710
+    [34mall[39m: [
+      [34;4mApp\Models\Posts[39;24m {#5976
+        [34mid[39m: [35m1[39m,
+        [34muser_id[39m: [35m1[39m,
+        [34mtitle[39m: "[32mHic impedit cupiditate sit minus. Autem eius culpa nisi praesentium officia aut. Nam quis enim a cum. Aliquid totam sint culpa optio incidunt.[39m",
+        [34mdescription[39m: "[32mDeleniti doloribus qui aperiam omnis dicta pariatur. Quo praesentium qui consequatur rerum. Et rerum quos debitis quam numquam nihil quis. Rerum aspernatur ipsum quasi.[39m",
+        [34mcreated_at[39m: "[32m2024-03-11 12:02:58[39m",
+        [34mupdated_at[39m: "[32m2024-03-11 12:02:58[39m",
+      },
+      [34;4mApp\Models\Posts[39;24m {#5977
+        [34mid[39m: [35m2[39m,
+        [34muser_id[39m: [35m1[39m,
+        [34mtitle[39m: "[32mVoluptatem commodi in nihil omnis quod laboriosam. Suscipit dolor quia asperiores et omnis illo.[39m",
+        [34mdescription[39m: "[32mEt sint dicta porro aut delectus repellendus. Ab soluta dolor in perspiciatis rerum et. Debitis aliquam ab est minus non.[39m",
+        [34mcreated_at[39m: "[32m2024-03-11 12:02:58[39m",
+        [34mupdated_at[39m: "[32m2024-03-11 12:02:58[39m",
+      },
+      [34;4mApp\Models\Posts[39;24m {#5978
+        [34mid[39m: [35m3[39m,
+        [34muser_id[39m: [35m1[39m,
+        [34mtitle[39m: "[32mEt alias quasi animi cumque iusto laudantium. Alias magni et delectus minima optio. Dicta eligendi illo reiciendis provident eos maiores autem quia.[39m",
+        [34mdescription[39m: "[32mEt dolorem aut nesciunt est. Aut porro tempore rerum recusandae ipsa. Consectetur libero ea ex quidem quo magni quia. Omnis harum exercitationem repellendus non.[39m",
+        [34mcreated_at[39m: "[32m2024-03-11 12:02:58[39m",
+        [34mupdated_at[39m: "[32m2024-03-11 12:02:58[39m",
+      },
+    ],
+  }
+
