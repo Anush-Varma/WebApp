@@ -51,7 +51,7 @@ class User extends Authenticatable
 
     # a user can have many likes on different posts
     public function likes(){
-        return $this->hasMany(Likes::class);
+        return $this->belongsToMany(Posts::class, 'likes', 'user_id', 'post_id');
     }
 
     # a user can have many bookmarks

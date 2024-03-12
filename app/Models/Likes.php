@@ -10,14 +10,13 @@ class Likes extends Model
     use HasFactory;
 
 
-    # a like belongs to one post 
     public function post(){
-        return $this->belongsTo(Posts::class);
+        return $this->belongsToMany(Posts::class);
     }
 
-    # one like belongs to one user for a post
+  
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class);
     }
 
 }
