@@ -11,7 +11,7 @@ class Bookmarks extends Model
 
     # each bookmark belongs to one post
     public function post(){
-        return $this->belongsTo(Posts::class);
+        return $this->belongsToMany(Posts::class);
 
     }
 

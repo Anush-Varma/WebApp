@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Posts;
 use App\Models\Comments;
 use App\Models\Likes;
+use App\Models\Bookmarks;
 
 class DatabaseSeeder extends Seeder
 {
@@ -49,6 +50,26 @@ class DatabaseSeeder extends Seeder
             }
 
         }
+
+        //generate 3 random bookmarks for users on posts
+        $numOfBookmarks = 3;
+
+        for ($i = 0; $i< $numOfBookmarks; $i++){
+            $user = $users->random();
+            $post = $user->posts->random();
+            $bookmarkExists = Bookmarks::where('user_id', $user->id)->where('post_id', $post->id)->exists();
+
+            if (!$bookmarkExists){
+                Bookmarks::factory()->create([
+                    'user_id' => $user->id,
+                    'post_id' => $post->id,
+                ]);
+            }
+            
+        }
+    
+
+
 
 
     }
