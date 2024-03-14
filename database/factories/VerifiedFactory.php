@@ -4,12 +4,11 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
-use App\Models\Posts;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Bookmarks>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Verified>
  */
-class BookmarksFactory extends Factory
+class VerifiedFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,14 +17,11 @@ class BookmarksFactory extends Factory
      */
 
 
-     /**
-      * Accociate a random user and a post to be bookmarked
-      */
+     // generate a random user to be verified
     public function definition(): array
     {
         return [
             'user_id' => $this->faker->randomElement(User::pluck('id')),
-            'post_id' => $this->faker->randomElement(Posts::pluck('id')),
         ];
     }
 }

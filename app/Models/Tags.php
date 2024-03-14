@@ -11,6 +11,7 @@ class Tags extends Model
 
 
     # each tag can belong to many different posts
+    # many to many relationship
     public function posts(){
         return $this->belongsToMany(Posts::class);
     }

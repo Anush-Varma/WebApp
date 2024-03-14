@@ -15,6 +15,11 @@ class PostsFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+     /**
+      * Generate a random user to assocciate the post to
+      * Generate a random description and title for the post
+      */
     public function definition(): array
     {
         return [

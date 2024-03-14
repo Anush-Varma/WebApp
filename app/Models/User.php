@@ -66,6 +66,7 @@ class User extends Authenticatable
     }
 
     # a user is verified or not
+    # one to one relationship
     public function verified(){
         return $this->hasOne(Verified::class);
     }

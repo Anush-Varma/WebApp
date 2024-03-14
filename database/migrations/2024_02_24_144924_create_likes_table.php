@@ -15,7 +15,8 @@ return new class extends Migration
             $table->primary(['user_id', 'post_id']);
             $table->foreignId('user_id');
             $table->foreignId('post_id');
-            
+
+            //ensures a like is unique therefore one like from one user per post
             $table->unique(['user_id', 'post_id']);
             
             $table->foreign('user_id')->references('id')->on('users')

@@ -11,6 +11,7 @@ class Verified extends Model
 
 
     # A user can either be verified or not
+    # one to one relationship
     public function verified(){
         return $this->belongsTo(User::class);
     }

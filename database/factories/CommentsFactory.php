@@ -16,6 +16,13 @@ class CommentsFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+
+
+     /**
+      * Generate a comment which is allocated to a random user and on a random post
+      * Generate a random title and description for the comment
+      */
     public function definition(): array
     {
         return [

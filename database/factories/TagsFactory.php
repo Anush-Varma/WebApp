@@ -14,6 +14,9 @@ class TagsFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+
+     // generate a random tag
     public function definition(): array
     {
         return [

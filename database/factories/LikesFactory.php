@@ -16,6 +16,12 @@ class LikesFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+
+
+     /**
+      * Allocate a random user and a post to be liked 
+      */
     public function definition(): array
     {
         return [
