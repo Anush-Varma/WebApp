@@ -23,7 +23,4 @@ class PostsFactory extends Factory
             'title' => fake()->text(),
         ];
     }
-    
-
-
 }

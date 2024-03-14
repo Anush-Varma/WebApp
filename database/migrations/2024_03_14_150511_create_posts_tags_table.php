@@ -11,21 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bookmarks', function (Blueprint $table) {
-            $table->primary(['post_id', 'user_id']);
-            $table->foreignId('user_id');
-            $table->foreignId('post_id');
-            
-
-            
-            $table->foreign('post_id')->references('id')->on('posts')
-                ->onDelete('cascade')->onUpdate('cascade');
-            
-            
-            $table->foreign('user_id')->references('id')->on('users')
-                ->onDelete('cascade')->onUpdate('cascade');
-
+        Schema::create('posts_tags', function (Blueprint $table) {
+            $table->primary(['posts_id', 'tags_id']);
+            $table->foreignId('posts_id');
+            $table->foreignId('tags_id');
             $table->timestamps();
+
+            $table->foreign('tags_id')->references('id')->on('tags')
+                ->onDelete('cascade')->onUpdate('cascade');
+            
+            $table->foreign('posts_id')->references('id')->on('posts')
+                ->onDelete('cascade')->onUpdate('cascade');
+
+
         });
     }
 
@@ -34,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bookmarks');
+        Schema::dropIfExists('posts_tags');
     }
 };

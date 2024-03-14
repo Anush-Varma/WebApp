@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
+// One to Many relationship between User and Posts
 class Comments extends Model
 {
     use HasFactory;

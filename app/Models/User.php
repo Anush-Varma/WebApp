@@ -51,7 +51,7 @@ class User extends Authenticatable
 
     # a user can have many likes on different posts
     public function likes(){
-        return $this->belongsToMany(Posts::class, 'likes', 'user_id', 'post_id');
+        return $this->hasMany(Posts::class);
     }
 
     # a user can have many bookmarks
@@ -64,4 +64,10 @@ class User extends Authenticatable
     public function posts() {
         return $this->hasMany(Posts::class);
     }
+
+    # a user is verified or not
+    public function verified(){
+        return $this->hasOne(Verified::class);
+    }
+
 }

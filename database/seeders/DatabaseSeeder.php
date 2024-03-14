@@ -3,13 +3,13 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Database\Factories\CommentsFactory;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Posts;
 use App\Models\Comments;
 use App\Models\Likes;
 use App\Models\Bookmarks;
+use App\Models\Tags;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,11 +20,13 @@ class DatabaseSeeder extends Seeder
     {
 
 
-        // generate 3 users and 3 posts for each users
-        $users = User::factory()->count(10)->
-            has(Posts::factory()->count(3))->create();
-    
-
+        // generate 10 users and 3 posts for each user
+        $users = User::factory()->count(10)->has(
+            Posts::factory()->count(3)->hasAttached(
+                Tags::factory()->count(2) // Attach 2 tags to each post
+            )
+        )->create();
+        
 
         //generate random comments for random posts and users
         Comments::factory()->count(5)->create([
@@ -67,8 +69,7 @@ class DatabaseSeeder extends Seeder
             }
             
         }
-    
-
+        
 
 
 

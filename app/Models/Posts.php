@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
+
 class Posts extends Model
 {
     use HasFactory;
-
-
 
     # each post can have many comments
     public function comments(){
@@ -19,12 +19,25 @@ class Posts extends Model
 
     # each post can have many likes
     public function likes(){
-        return $this->belongsToMany(User::class);
+        return $this->hasMany(Likes::class);
     }
 
 
-    # each post belongs  to one user
+    # each post belongs to one user
     public function user() {
         return $this->belongsTo(User::class);
     }
+
+
+    # each post can be bookmarked by multiple users
+    public function bookmarks(){
+        return $this->hasMany(Bookmarks::class);
+    }
+
+    # each post can have multiple tags
+    public function tags(){
+        return $this->belongsToMany(Tags::class);
+    }
+
+
 }

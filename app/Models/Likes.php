@@ -10,13 +10,20 @@ class Likes extends Model
     use HasFactory;
 
 
+    /**
+     * One to many relationship between posts and likes.  
+     * A like belongs to one Post
+     * */  
     public function post(){
-        return $this->belongsToMany(Posts::class);
+        return $this->belongsTo(Posts::class);
     }
 
-  
+    /**
+     * One to many relationship between User and likes.  
+     * A like belongs to one user
+     * */ 
     public function user(){
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
 }
