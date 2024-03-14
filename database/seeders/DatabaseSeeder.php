@@ -20,8 +20,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-
-
         // generate 10 users and 3 posts for each user
         $users = User::factory()->count(10)->has(
             Posts::factory()->count(3)->hasAttached(
@@ -33,19 +31,16 @@ class DatabaseSeeder extends Seeder
         )->create();
 
 
-
         // Generate 5 verified users to represent 
         // one to one relationship
         Verified::factory()->count(5)->create();
         
-    
 
         //generate random comments for random posts and users
         Comments::factory()->count(5)->create([
             'user_id' => $users->random()->id,
             'post_id' => Posts::all()->random()->id,
         ]);
-
 
 
         //add 5 likes so that a user can only like a post once
