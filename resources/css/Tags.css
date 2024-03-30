@@ -1,0 +1,23 @@
+.oval-button{
+    background-color: white;
+    border: 1px black solid;
+    width: 90%;
+    border-radius: 50px;
+    padding: 5px 90px;
+    cursor: pointer;
+    margin-left: 0.1%;
+    margin-right: 0.1%;
+}
+
+.bottom-row{
+    
+    margin-bottom: 1%;
+    width: 100%;
+    display: flex;
+    justify-content: stretch;
+    flex-direction: row;
+}
+
+.oval-button:hover{
+    opacity: 5;
+}
