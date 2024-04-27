@@ -3,7 +3,7 @@ import '../../css/Tags.css';
 
 const Tags = () => {
     return(
-        <div className="bottom-row">
+        <div className="tag-row">
             <button className="oval-button">
                 Technology
             </button>

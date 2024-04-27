@@ -1,23 +1,26 @@
 .oval-button{
-    background-color: white;
-    border: 1px black solid;
+    background-color: rgb(var(--accent-color-2));
+    color: rgb(var(--fg-color-2));
+    border: 1px ;
     width: 90%;
     border-radius: 50px;
     padding: 5px 90px;
     cursor: pointer;
     margin-left: 0.1%;
     margin-right: 0.1%;
+    transition: all 0.2s ease-in-out; 
 }
 
-.bottom-row{
-    
-    margin-bottom: 1%;
+.oval-button:hover{
+    box-shadow: 0 0 10px rgb(var(--shadow-color));
+    transform: translate(0, -2px);
+}
+
+.tag-row{
+    margin-bottom: 20px;
     width: 100%;
     display: flex;
     justify-content: stretch;
     flex-direction: row;
-}
-
-.oval-button:hover{
-    opacity: 5;
+    gap: 20px;
 }

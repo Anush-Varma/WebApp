@@ -1,0 +1,66 @@
+.input[type=text], 
+.input[type=password], 
+.input[type=email] {
+    border-radius: var(--border-radius);
+    background-color: rgb(var(--bg-color-2));
+    padding: 10px 15px;
+    border: none;
+    font-size: 1em;
+}
+
+.input::placeholder {
+    color: rgba(var(--fg-color-1), 0.3);
+}
+
+.input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    padding-left: 30px;
+}
+
+.checkbox .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(var(--bg-color-2));
+    border-radius: 5px;
+}
+
+.checkbox input:checked ~ .checkmark {
+    background-color: rgb(var(--accent-color-2));
+}
+
+.checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox .checkmark:after {
+    left: 6px;
+    top: 4px;
+    width: 4px;
+    height: 8px;
+    border: solid rgb(var(--fg-color-2));
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }

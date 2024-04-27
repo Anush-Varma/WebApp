@@ -2,18 +2,15 @@ import TopMenu from "@/Components/TopMenu";
 import TagsList from "@/Components/TagsList"
 import '../../css/home.css';
 import CardContainer from "@/Components/CardContainer";
+import AppLayout from "@/Layouts/AppLayout";
 
 
-const Home = () => {
+const Home = ({posts}) => {
     return(
-        <div className='home-container'>
-            <TopMenu/>
+        <AppLayout>
             <TagsList/>
-            <CardContainer/>
-            
-        </div>
-        
-        
+            <CardContainer data={posts}/>
+        </AppLayout>
     )
 }
 
