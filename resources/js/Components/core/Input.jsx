@@ -1,6 +1,6 @@
 import "../../../css/input.css"
 
-const Input = ({ className, ...props }) => {
+const Input = ({ className, Icon, ...props }) => {
     // Youve heard of centering a div but have you styled a checkbox
     if(props.type == "checkbox") {
         return <label className="checkbox">
@@ -10,7 +10,10 @@ const Input = ({ className, ...props }) => {
         </label>
     }
 
-    return <input className={`input ${className ?? ""}`} {...props} />
+    return <div class="input">
+        { Icon && <Icon className="inputIcon" /> }
+        <input className={className ?? ""} {...props} />
+    </div>
 
 }
 

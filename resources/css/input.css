@@ -1,14 +1,27 @@
-.input[type=text], 
-.input[type=password], 
-.input[type=email] {
+.input {
     border-radius: var(--border-radius);
     background-color: rgb(var(--bg-color-2));
+    display: flex;
     padding: 10px 15px;
-    border: none;
-    font-size: 1em;
+    gap: 5px;
+    align-items: center;
 }
 
-.input::placeholder {
+.input .inputIcon {
+    width: 20px;
+    height: 20px;
+}
+
+.input input[type=text], 
+.input input[type=password], 
+.input input[type=email] {
+    background-color: rgb(var(--bg-color-2));
+    border: none;
+    font-size: 1em;
+    flex: 1;
+}
+
+.input input::placeholder {
     color: rgba(var(--fg-color-1), 0.3);
 }
 

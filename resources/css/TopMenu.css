@@ -1,12 +1,36 @@
 .topRow {
     display: flex;
+    align-items: center;
     width: 100%;
+    border-bottom: 1px solid rgba(var(--fg-color-1), 0.2);
+    padding: 10px;
 }
 
 .topRow .searchBar {
+    flex: 2;
+}
+
+.topRow .leftButtons {
     flex: 1;
 }
 
 .topRow .rightButtons {
+    display: flex;
+    gap: 10px;
+    justify-content: end;
+    flex: 1;
+}
 
+.topRow .rightButtons .rightButtonIcon {
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+
+.topRow .rightButtons .rightButtonIcon:hover {
+    background-color: rgb(var(--bg-color-2));
 }

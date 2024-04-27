@@ -4,6 +4,7 @@ import React from 'react';
 import CreatePostButton from "@/Components/CreatePostButton"; 
 import '../../css/TopMenu.css';
 import { useForm } from '@inertiajs/react';
+import Input from "./core/Input";
 
 export default function TopMenu(){
     const { post } = useForm({});
@@ -14,15 +15,22 @@ export default function TopMenu(){
 
     return (
         <div className="topRow">
+            <div className="leftButtons">
+
+            </div>
+            
             <div className="searchBar">
-                <IoMdSearch className="icon"></IoMdSearch>
-                <input type="text" placeholder="Search" />
+                <Input
+                    type="text"
+                    placeholder="Search"
+                    Icon={IoMdSearch}
+                />
             </div>
 
 
             <div className="rightButtons">
-                <CgProfile onClick={logout} className="profile"/>
-                <CreatePostButton/>
+                <CgProfile onClick={logout} className="rightButtonIcon"/>
+                <IoMdAdd onClick={() => window.location.replace("/create")} className="rightButtonIcon"/>
             </div>
         </div>  
     );

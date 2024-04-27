@@ -7,7 +7,9 @@ const AppLayout = (props) => {
         <TopMenu/>
 
         <div className="appContent">
-            {props.children}
+            <div className="appContentInner">
+                {props.children}
+            </div>
         </div>
     </div>
 }

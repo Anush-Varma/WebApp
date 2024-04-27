@@ -1,20 +1,21 @@
 import React from 'react';
 import '../../css/Tags.css';
+import Button from './core/Button';
 
 const Tags = () => {
     return(
-        <div className="tag-row">
-            <button className="oval-button">
+        <div className="tagRow">
+            <Button>
                 Technology
-            </button>
-            
-            <button className="oval-button">
+            </Button>
+
+            <Button>
                 Politics
-            </button>
-            
-            <button className="oval-button">
+            </Button>
+
+            <Button>
                 Eco
-            </button>
+            </Button>
         </div>
     )
 }

@@ -2,33 +2,49 @@ import TopMenu from "@/Components/TopMenu";
 import { RiDeleteBinLine } from "react-icons/ri";
 
 import '..//..//css/createpost.css';
+import Button from "@/Components/core/Button";
+import Form from "@/Components/core/Form";
+import Input from "@/Components/core/Input";
+import AppLayout from "@/Layouts/AppLayout";
+import TextArea from "@/Components/core/TextArea";
+import TagInput from "@/Components/TagInput";
+import { useForm } from "@inertiajs/react";
 
-import '..//..//css/save-delete-button.css';
 
 const CreatePost = () => {
-    return(
-        <div className='post-container'>
-            <label title-label> Title </label>
-            <input className='title' type="text" >
-            </input>
-            <input className='tags' type="checkbox" />
-            <label className="desciption-label">Description</label>
-            <textarea className='description' type="text" >
-            </textarea>
+    const { data, setData, post, processing, errors, reset } = useForm({
+        title: '',
+        description: '',
+        tags: [],
+        remember: false,
+    });
 
-            <div className='save-delete-button'>
-                <button className='delete'>
-                    <RiDeleteBinLine size={35}/>
-                </button>
-                <button className='save'>
-                    <label>
-                        Save
-                    </label>
-                </button>
-            </div>
-            
-        </div>
-    )
+    return <AppLayout>
+        <Form>
+            <h1>Create Post</h1>
+            <Input 
+                type="text" 
+                placeholder="Title" 
+                value={data.title}
+                onChange={(e) => setData('title', e.target.value)} 
+            />
+
+            <TagInput
+                onChange={(tags) => setData('tags', tags)} 
+            />
+
+            <TextArea
+                placeholder="Description" 
+                type="text" 
+                rows={10}
+                value={data.description}
+                onChange={(e) => setData('description', e.target.value)} 
+            />
+ 
+            <Button className='save'>Save</Button>
+        </Form>
+    </AppLayout>
+    
 }
 
 export default CreatePost;
