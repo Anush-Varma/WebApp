@@ -23,7 +23,7 @@ const Register = () => {
     const submit = (e) => {
         e.preventDefault();
         
-        post(route('login'));
+        post(route('register'));
     };
 
     return <Layout className="center">
@@ -33,9 +33,11 @@ const Register = () => {
             <Input 
                 type="text"
                 placeholder="Name"
-                value={data.email}
+                value={data.name}
                 onChange={(e) => setData('name', e.target.value)} 
             />
+            
+            {errors.name && <p style={{color: "red"}}>{errors.name}</p>}
 
             <Input 
                 type="email"
@@ -43,6 +45,8 @@ const Register = () => {
                 value={data.email}
                 onChange={(e) => setData('email', e.target.value)} 
             />
+            
+            {errors.email && <p style={{color: "red"}}>{errors.email}</p>}
 
             <Input 
                 type="password" 
@@ -50,13 +54,17 @@ const Register = () => {
                 value={data.password}
                 onChange={(e) => setData('password', e.target.value)} 
             />
+            
+            {errors.password && <p style={{color: "red"}}>{errors.password}</p>}
 
             <Input 
                 type="password" 
                 placeholder="Password Confirmation"
-                value={data.password}
+                value={data.password_confirmation}
                 onChange={(e) => setData('password_confirmation', e.target.value)} 
             />
+            
+            {errors.password_confirmation && <p style={{color: "red"}}>{errors.password_confirmation}</p>}
 
             <Button variant={2}>Register</Button>
             

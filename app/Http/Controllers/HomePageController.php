@@ -5,6 +5,7 @@ use Inertia\Inertia;
 
 use Illuminate\Http\Request;
 use App\Models\Posts;
+use App\Models\Tags;
 
 class HomePageController extends Controller
 {
@@ -14,8 +15,13 @@ class HomePageController extends Controller
             "description",
         ]);
 
+        $tags = Tags::all([
+            "name"
+        ]);
+
         return Inertia::render('Home', [
             'posts' => $posts,
+            'tags' => $tags
         ]);
     }
 }

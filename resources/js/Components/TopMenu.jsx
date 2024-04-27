@@ -1,7 +1,6 @@
 import { IoMdAdd, IoMdSearch } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import React from 'react';
-import CreatePostButton from "@/Components/CreatePostButton"; 
 import '../../css/TopMenu.css';
 import { useForm } from '@inertiajs/react';
 import Input from "./core/Input";
@@ -16,9 +15,12 @@ export default function TopMenu(){
     return (
         <div className="topRow">
             <div className="leftButtons">
+                <h1 className="logo" onClick= {() => window.location.replace("/")}>
+                    Deadit
+                </h1>
 
             </div>
-            
+
             <div className="searchBar">
                 <Input
                     type="text"

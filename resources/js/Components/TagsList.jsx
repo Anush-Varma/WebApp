@@ -1,21 +1,15 @@
 import React from 'react';
-import '../../css/Tags.css';
+import '../../css/tags.css';
 import Button from './core/Button';
 
-const Tags = () => {
+const Tags = ({tags}) => {
     return(
         <div className="tagRow">
-            <Button>
-                Technology
-            </Button>
-
-            <Button>
-                Politics
-            </Button>
-
-            <Button>
-                Eco
-            </Button>
+            {
+                tags.map((tag, i) => <Button variant={i%2 + 1}>
+                    {tag.name}
+                </Button>)
+            }
         </div>
     )
 }

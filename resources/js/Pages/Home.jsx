@@ -1,14 +1,15 @@
-import TopMenu from "@/Components/TopMenu";
 import TagsList from "@/Components/TagsList"
 import '../../css/home.css';
 import CardContainer from "@/Components/CardContainer";
 import AppLayout from "@/Layouts/AppLayout";
+import { Head } from "@inertiajs/react";
 
 
-const Home = ({posts}) => {
+const Home = ({posts, tags}) => {
     return(
         <AppLayout>
-            <TagsList/>
+            <Head title="Dashboard"/>
+            <TagsList tags={tags}/>
             <CardContainer data={posts}/>
         </AppLayout>
     )

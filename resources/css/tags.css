@@ -5,4 +5,5 @@
     justify-content: stretch;
     flex-direction: row;
     gap: 20px;
+    overflow-x: auto;
 }

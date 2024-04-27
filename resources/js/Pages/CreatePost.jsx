@@ -1,6 +1,3 @@
-import TopMenu from "@/Components/TopMenu";
-import { RiDeleteBinLine } from "react-icons/ri";
-
 import '..//..//css/createpost.css';
 import Button from "@/Components/core/Button";
 import Form from "@/Components/core/Form";
@@ -41,7 +38,7 @@ const CreatePost = () => {
                 onChange={(e) => setData('description', e.target.value)} 
             />
  
-            <Button className='save'>Save</Button>
+            <Button className='save' variant={2}>Save</Button>
         </Form>
     </AppLayout>
     

@@ -34,3 +34,7 @@
 .topRow .rightButtons .rightButtonIcon:hover {
     background-color: rgb(var(--bg-color-2));
 }
+
+.topRow .leftButtons .logo{
+    cursor: pointer;
+}
