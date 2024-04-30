@@ -12,6 +12,10 @@ export default function TopMenu(){
         post(route('logout'));
     }
 
+    const profile = () => {
+        post(route(''))
+    }
+
     return (
         <div className="topRow">
             <div className="leftButtons">
@@ -31,7 +35,8 @@ export default function TopMenu(){
 
 
             <div className="rightButtons">
-                <CgProfile onClick={logout} className="rightButtonIcon"/>
+                <CgProfile onClick={() => window.location.replace("/profile")} className="rightButtonIcon"/>
+                {/* <CgProfile onClick={logout} className="rightButtonIcon"/> */}
                 <IoMdAdd onClick={() => window.location.replace("/create")} className="rightButtonIcon"/>
             </div>
         </div>  

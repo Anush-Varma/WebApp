@@ -28,14 +28,15 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/', [HomePageController::class, 'index']);
+Route::get('/', [HomePageController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
     
+    Route::post('/create', [PostsController::class, 'store'])->name('post.store');
     Route::get('/create', [PostsController::class, 'create'])->name('post.create');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';

@@ -6,7 +6,7 @@ const Tags = ({tags}) => {
     return(
         <div className="tagRow">
             {
-                tags.map((tag, i) => <Button variant={i%2 + 1}>
+                tags.map((tag, i) => <Button className="tagButton" variant={i%2 + 1}>
                     {tag.name}
                 </Button>)
             }

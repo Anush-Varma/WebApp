@@ -59,7 +59,6 @@ class User extends Authenticatable
         return $this->hasMany(Bookmarks::class);
     }
 
-
     # a user can have many posts
     public function posts() {
         return $this->hasMany(Posts::class);

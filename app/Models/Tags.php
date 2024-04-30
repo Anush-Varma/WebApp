@@ -9,6 +9,9 @@ class Tags extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+    ];
 
     # each tag can belong to many different posts
     # many to many relationship

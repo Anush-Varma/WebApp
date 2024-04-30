@@ -11,6 +11,14 @@ class Posts extends Model
 {
     use HasFactory;
 
+    
+    protected $fillable = [
+        'user_id',
+        'title',
+        'tags',
+        'description',
+    ];
+
     # each post can have many comments
     public function comments(){
         return $this->hasMany(Comments::class);

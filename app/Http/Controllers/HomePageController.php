@@ -10,10 +10,15 @@ use App\Models\Tags;
 class HomePageController extends Controller
 {
     public function index(){
-        $posts = Posts::all([
-            "title",
-            "description",
-        ]);
+        
+
+        $posts = Posts::with('tags')->get()->map(function($post) {
+            return [
+                "title" => $post->title,
+                "description" => $post->description,
+                "tags" => $post->tags->pluck('name'),
+            ];
+        });
 
         $tags = Tags::all([
             "name"

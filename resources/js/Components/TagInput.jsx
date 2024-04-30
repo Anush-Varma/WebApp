@@ -26,6 +26,10 @@ const TagInput = ({onChange}) => {
         }
     };
 
+    useEffect(() => {
+        onChange(tags)
+    }, [tags])
+
 
     return <div className="tagInput">
         {

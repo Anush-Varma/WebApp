@@ -8,6 +8,7 @@ export default function CardContainer({data}){
             {
                 data.map(element => 
                     <Card>
+                        <p>{element.tags.map(tag => `#${tag}`).join(" ")}</p>
                         <h2>{element.title}</h2>
                         <p>{element.description}</p>
                     </Card>

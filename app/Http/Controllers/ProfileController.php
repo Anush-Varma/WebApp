@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Posts;
+use App\Models\Tags;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -18,7 +20,28 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): Response
     {
-        return Inertia::render('Profile/Edit', [
+
+        $posts = Posts::with('tags')->where("user_id", Auth::user()->id)->get()->map(function($post) {
+            return [
+                "title" => $post->title,
+                "description" => $post->description,
+                "tags" => $post->tags->pluck('name'),
+            ];
+        });
+
+        $tags = Tags::all([
+            "name"
+        ]);
+
+        $userEmail = Auth::user()->email;
+        $userName = Auth::user()->name;
+
+        
+        return Inertia::render('Profile', [
+            'email' => $userEmail,
+            'name' => $userName,
+            'posts' => $posts,
+            'tags' => $tags,
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
         ]);
@@ -37,7 +60,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit');
+        return Redirect::to('/profile');
     }
 
     /**
@@ -45,19 +68,19 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $request->validate([
-            'password' => ['required', 'current_password'],
-        ]);
+        // $request->validate([
+        //     'password' => ['required', 'current_password'],
+        // ]);
 
-        $user = $request->user();
+        // $user = $request->user();
 
-        Auth::logout();
+        // Auth::logout();
 
-        $user->delete();
+        // $user->delete();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        // $request->session()->invalidate();
+        // $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        // return Redirect::to('/');
     }
 }

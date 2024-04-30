@@ -13,11 +13,15 @@ const CreatePost = () => {
         title: '',
         description: '',
         tags: [],
-        remember: false,
     });
 
+    const submit = (e) => {
+        e.preventDefault();
+        post("/create")
+    }
+
     return <AppLayout>
-        <Form>
+        <Form onSubmit={submit}>
             <h1>Create Post</h1>
             <Input 
                 type="text" 
