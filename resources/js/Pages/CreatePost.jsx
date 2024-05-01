@@ -13,6 +13,7 @@ const CreatePost = () => {
         title: '',
         description: '',
         tags: [],
+        image: null
     });
 
     const submit = (e) => {
@@ -40,6 +41,13 @@ const CreatePost = () => {
                 rows={10}
                 value={data.description}
                 onChange={(e) => setData('description', e.target.value)} 
+            />
+
+            <Input 
+                type="file"
+                accept=".jpg,.jpeg,.png"
+                placeholder="image" 
+                onImageChange={(image) => setData('image', image)} 
             />
  
             <Button className='save' variant={2}>Save</Button>

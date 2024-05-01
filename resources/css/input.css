@@ -1,8 +1,8 @@
 .input {
     border-radius: var(--border-radius);
     background-color: rgb(var(--bg-color-2));
-    display: flex;
     padding: 10px 15px;
+    display: flex;
     gap: 5px;
     align-items: center;
 }
@@ -74,4 +74,51 @@
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-  }
+}
+
+.file {
+    position: relative;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    background-color: rgb(var(--bg-color-2));
+    padding: 10px 15px;
+    background-color: rgb(var(--bg-color-2));
+    font-size: 1em;
+}
+
+.file input {
+    display: none;
+}
+
+.file .selected {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    height: 400px;
+    width: 100%;
+}
+
+.file .selected .fg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.file .selected .bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    filter: blur(10px) brightness(0.3);
+}
+
+.file .selected .remove {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    fill: rgb(var(--fg-color-1));
+}
