@@ -1,0 +1,16 @@
+.commentBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    background-color: rgb(var(--bg-color-2));
+    border-radius: var(--border-radius);
+}
+
+.commentBox textarea {
+    width: 100%;
+}
+
+.commentBox .commentInputs {
+    padding: 5px;
+}

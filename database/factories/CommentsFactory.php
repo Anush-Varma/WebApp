@@ -21,14 +21,12 @@ class CommentsFactory extends Factory
 
      /**
       * Generate a comment which is allocated to a random user and on a random post
-      * Generate a random title and description for the comment
+      * Generate a random description for the comment
       */
     public function definition(): array
     {
         return [
-            'post_id' => $this->faker->randomElement(Posts::pluck('id')),
             'user_id' => $this->faker->randomElement(User::pluck('id')),
-            'title' => fake()->text(),
             'description' => fake()->text(),
         ];
     }

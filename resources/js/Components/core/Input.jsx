@@ -10,7 +10,7 @@ const Input = ({ className, Icon, ...props }) => {
         </label>
     }
 
-    return <div class="input">
+    return <div className="input">
         { Icon && <Icon className="inputIcon" /> }
         <input className={className ?? ""} {...props} />
     </div>

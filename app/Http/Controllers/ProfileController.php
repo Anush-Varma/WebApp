@@ -20,9 +20,11 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): Response
     {
+        $limit = 10;
 
-        $posts = Posts::with('tags')->where("user_id", Auth::user()->id)->get()->map(function($post) {
+        $posts = Posts::with('tags')->where("user_id", Auth::user()->id)->skip(0)->limit($limit)->get()->map(function($post) {
             return [
+                "id" => $post->id,
                 "title" => $post->title,
                 "description" => $post->description,
                 "tags" => $post->tags->pluck('name'),

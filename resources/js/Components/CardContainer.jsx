@@ -7,10 +7,10 @@ export default function CardContainer({data}){
         <div className="card-container">
             {
                 data.map(element => 
-                    <Card>
-                        <p>{element.tags.map(tag => `#${tag}`).join(" ")}</p>
-                        <h2>{element.title}</h2>
-                        <p>{element.description}</p>
+                    <Card onClick={() => window.location.replace(`/post/${element.id}`)}>
+                        <p className="maxLines1">{element.tags.map(tag => `#${tag}`).join(" ")}</p>
+                        <h2 className="maxLines3">{element.title}</h2>
+                        <p className="maxLines3">{element.description}</p>
                     </Card>
                 )
             }

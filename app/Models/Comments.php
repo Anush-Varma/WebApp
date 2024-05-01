@@ -11,15 +11,21 @@ class Comments extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'description',
+    ];
     
     # each comment belongs to one user 
     public function user(){
         return $this->belongsTo(User::class);
     }
 
-    # each comment belongs to one post
-    public function post(){
-        return $this->belongsTo(Posts::class);
+    public function comments(){
+        return $this->belongsToMany(Comments::class);
     }
 
+    public function posts(){
+        return $this->belongsToMany(Posts::class);
+    }
 }

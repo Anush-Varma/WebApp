@@ -21,7 +21,7 @@ class Posts extends Model
 
     # each post can have many comments
     public function comments(){
-        return $this->hasMany(Comments::class);
+        return $this->belongsToMany(Comments::class);
     }
 
 

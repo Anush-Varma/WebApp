@@ -2,14 +2,12 @@ import TopMenu from "@/Components/TopMenu";
 import "../../css/layout.css"
 import Layout from "./Layout";
 
-const AppLayout = (props) => {
+const AppLayout = ({onScroll, ...props}) => {
     return <div className="appLayout">
         <TopMenu/>
 
-        <div className="appContent">
-            <div className="appContentInner">
-                {props.children}
-            </div>
+        <div onScroll={onScroll} className="appContent">
+            <div {...props} className="appContentInner"/>
         </div>
     </div>
 }

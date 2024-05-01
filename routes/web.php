@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ProfileController;
@@ -19,23 +20,20 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
-
 Route::get('/', [HomePageController::class, 'index'])->name('home');
+Route::get('/post/{id}', [PostsController::class, 'view'])->name('post.view');
+
+
+Route::get('/api/posts', [PostsController::class, 'getPosts'])->name('api.posts');
+Route::get('/api/me/posts', [PostsController::class, 'getMyPosts'])->name('api.me.posts');
 
 Route::middleware('auth')->group(function () {
-    
     Route::post('/create', [PostsController::class, 'store'])->name('post.store');
     Route::get('/create', [PostsController::class, 'create'])->name('post.create');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    
+    Route::post('/comment/create', [CommentController::class, 'store'])->name('comment.store');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 

@@ -1,0 +1,13 @@
+.viewPost {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.viewPost .postContent h1 {
+    margin: 15px 0;
+}
+
+.viewPost .postContent p {
+    margin: 10px 0;
+}

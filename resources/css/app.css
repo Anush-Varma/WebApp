@@ -45,6 +45,11 @@ a:hover {
     opacity: 1.0;
 }
 
+hr {
+    border: none;
+    border-top: 1px solid rgba(var(--fg-color-1), 0.5);
+}
+
 *::-webkit-scrollbar {
     width: 1em;
     border: 2px solid rgb(var(--bg-color-1));

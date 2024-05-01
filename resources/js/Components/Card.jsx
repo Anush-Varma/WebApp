@@ -3,10 +3,8 @@ import '../../css/card.css';
 
 
 
-export default function Card(props){
+export default function Card({className, ...props}){
     return (
-        <div className="card">
-            {props.children}
-        </div>
+        <div className={`card ${className ? className : ""}`} {...props}/>
     );
 }

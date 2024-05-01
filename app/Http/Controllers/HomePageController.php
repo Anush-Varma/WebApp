@@ -10,10 +10,11 @@ use App\Models\Tags;
 class HomePageController extends Controller
 {
     public function index(){
+        $limit = 10;
         
-
-        $posts = Posts::with('tags')->get()->map(function($post) {
+        $posts = Posts::with('tags')->skip(0)->limit($limit)->get()->map(function($post) {
             return [
+                "id" => $post->id,
                 "title" => $post->title,
                 "description" => $post->description,
                 "tags" => $post->tags->pluck('name'),

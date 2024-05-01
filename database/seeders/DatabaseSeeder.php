@@ -36,13 +36,6 @@ class DatabaseSeeder extends Seeder
         Verified::factory()->count(5)->create();
         
 
-        //generate random comments for random posts and users
-        Comments::factory()->count(5)->create([
-            'user_id' => $users->random()->id,
-            'post_id' => Posts::all()->random()->id,
-        ]);
-
-
         //add 5 likes so that a user can only like a post once
         // one to many relationship
         $numOfLikes = 5;
