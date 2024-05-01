@@ -28,6 +28,8 @@ app()->singleton(S3Service::class, function ($app){
 
 Route::get('/', [HomePageController::class, 'index'])->name('home');
 Route::get('/post/{id}', [PostsController::class, 'view'])->name('post.view');
+Route::get('/post/{id}/edit', [PostsController::class, 'editPost'])->name('post.edit');
+Route::post('/post/{id}/edit', [PostsController::class, 'editPostStore'])->name('post.editstore');
 
 
 Route::get('/api/posts', [PostsController::class, 'getPosts'])->name('api.posts');

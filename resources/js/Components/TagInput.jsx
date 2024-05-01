@@ -13,8 +13,8 @@ const Tag = (props) => {
     </div>
 }
 
-const TagInput = ({onChange}) => {
-    const [tags, setTags] = useState([]);
+const TagInput = ({value=[], onChange}) => {
+    const [tags, setTags] = useState(value);
 
     const keyDown = (event) => {
         if(event.key == "Enter") {

@@ -52,6 +52,57 @@ class PostsController extends Controller
         return redirect('/');
     }
 
+    public function editPostStore(Request $request, $id, S3Service $s3Service) {
+        $post = Posts::with(['tags', "image", "user"])->where("id", $id)->first();
+
+        if($post->user->id != Auth::user()->id) {
+            return redirect("/");
+        }
+
+        Posts::where("id", $id)->update([
+            'title' => $request->title,
+            'description' => $request->description
+        ]);
+
+        foreach($post->tags as $tag) {
+            $tagId = Tags::where('name', $tag->name)->first()->id;
+
+            $post->tags()->detach($tagId);
+        }
+        
+        foreach($request->tags as $tag) {
+            $tagNew = Tags::firstOrCreate([
+                'name' => $tag
+            ]);
+
+            $post->tags()->attach($tagNew->id);
+        }
+
+        return redirect("/post/" . $id);
+    }
+
+    public function editPost(Request $request, $id, S3Service $s3Service) {
+        $post = Posts::with(['tags', "image", "user"])->where("id", $id)->first();
+
+        if($post->user->id != Auth::user()->id) {
+            return redirect("/");
+        }
+
+        $imageUrl = is_null($post->image) ? 
+            null :
+            $s3Service->getImageUrl($post->image->image);
+
+        return Inertia::render('EditPost', [
+            "post" => [
+                "id" => $post->id,
+                "title" => $post->title,
+                "description" => $post->description,
+                "tags" => $post->tags->pluck('name'),
+                "image" => $imageUrl,
+            ]
+        ]);
+    }
+
     public function view(Request $request, $id, S3Service $s3Service) {
         $post = Posts::with(['tags', "comments.user", "image"])->where("id", $id)->first();
 
