@@ -42,6 +42,10 @@ class Posts extends Model
         return $this->hasMany(Bookmarks::class);
     }
 
+    public function image(){
+        return $this->hasOne(PostsImage::class);
+    }
+
     # each post can have multiple tags
     # Many to many relationship
     public function tags(){

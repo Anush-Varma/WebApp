@@ -9,10 +9,19 @@ use App\Models\Tags;
 
 class HomePageController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
         $limit = 10;
+        $tags = $request->query("tags", []);
+
+        $tags = is_array($tags) ? $tags : array($tags);
+
+        $dbRequest = count($tags) <= 0 ? 
+            Posts::with("tags") :
+            $posts = Posts::whereHas('tags', function ($query) use($tags) {
+                $query->whereIn('name', $tags);
+            })->with("tags");
         
-        $posts = Posts::with('tags')->skip(0)->limit($limit)->get()->map(function($post) {
+        $posts = $dbRequest->skip(0)->limit($limit)->get()->map(function($post) {
             return [
                 "id" => $post->id,
                 "title" => $post->title,

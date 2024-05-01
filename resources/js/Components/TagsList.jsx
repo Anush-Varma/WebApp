@@ -1,12 +1,32 @@
 import React from 'react';
 import '../../css/tags.css';
 import Button from './core/Button';
+import { router } from '@inertiajs/react'
 
 const Tags = ({tags}) => {
+    const addTag = (tag) => {
+        let url = new URL(window.location.href);
+        url.searchParams.append("tags[]", tag);
+        router.get(url);
+    }
+
+    const sortedTags = tags.map(tag => {
+        let url = new URL(window.location.href);
+
+        return {
+            ...tag,
+            isSelected: url.searchParams.has("tags[]", tag.name) ? 1 : 0
+        }
+    }).sort((a, b) => b.isSelected - a.isSelected);
+
     return(
         <div className="tagRow">
             {
-                tags.map((tag, i) => <Button className="tagButton" variant={i%2 + 1}>
+                sortedTags.map((tag, i) => <Button 
+                    className="tagButton" 
+                    variant={tag.isSelected+1}
+                    onClick={() => addTag(tag.name)}
+                >
                     {tag.name}
                 </Button>)
             }

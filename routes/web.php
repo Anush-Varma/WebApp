@@ -5,9 +5,15 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ProfileController;
+use App\Services\S3Service;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
+
+app()->singleton(S3Service::class, function ($app){
+    return new S3Service();
+});
 
 /*
 |--------------------------------------------------------------------------

@@ -12,6 +12,14 @@ const ViewPost = ({ post: postData }) => {
                 <h1>{postData.title}</h1>
                 <hr/>
                 <b>{postData.tags.map(tag => `#${tag}`).join(" ")}</b>
+
+                {
+                    postData.image && <div className="image">
+                        <img className="bg" src={postData.image}/>
+                        <img className="fg" src={postData.image}/>
+                    </div>
+                }
+
                 {
                     postData.description.split("\n").map(line =>
                         <p>{line}</p>

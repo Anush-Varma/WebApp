@@ -36,6 +36,19 @@ return new class extends Migration
             $table->foreign('child_id')->references('id')->on('comments')
                 ->onDelete('cascade')->onUpdate('cascade');
         });
+
+        Schema::create('posts_images', function(Blueprint $table){
+            $table->id();
+            $table->string('image');
+            $table->foreignId('posts_id');
+
+            $table->foreign('posts_id')->references('id')->on('posts')
+                ->onDelete('cascade')->onUpdate('cascade');
+
+            $table->timestamps();
+        });
+
+
     }
 
     /**

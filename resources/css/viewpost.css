@@ -4,6 +4,30 @@
     gap: 10px;
 }
 
+.viewPost .postContent .image {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    height: 400px;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.viewPost .postContent .image .fg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.viewPost .postContent .image .bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    filter: blur(10px) brightness(0.3);
+}
+
 .viewPost .postContent h1 {
     margin: 15px 0;
 }
