@@ -1,0 +1,73 @@
+.commentsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.commentsContainer .comment {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.commentsContainer .comment .commentContentOuter {
+    position: relative;
+    display: flex;
+    gap: 25px;
+    padding: 0 0 0 14px;
+}
+
+.commentsContainer .comment .commentContentOuter .vline {
+    display: flex;
+    justify-content: center;
+    border-left: 1px solid rgb(var(--fg-color-1));
+}
+
+.commentsContainer .comment .commentContentOuter .vline .expand {
+    position: absolute;
+    cursor: pointer;
+    top: 50px;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(var(--bg-color-1));
+}
+
+.commentsContainer .comment .commentContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.commentsContainer .comment .commentContent .replies {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 0 0 30px;
+}
+
+.commentsContainer .comment .commentContent .description {
+}
+
+.commentsContainer .comment .commentContent .buttons {
+    display: flex;
+}
+
+.commentsContainer .comment .commentHeader {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.commentsContainer .comment .commentHeader .profilePic {
+    width: 30px;
+    height: 30px;
+}
+
+.commentsContainer .comment .commentHeader .date {
+
+}
+
+.commentsContainer .comment .commentHeader .name {
+    font-weight: bold;
+}

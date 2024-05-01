@@ -2,6 +2,7 @@ import '..//..//css/createpost.css';
 import AppLayout from "@/Layouts/AppLayout";
 import CommentBox from '@/Components/CommentBox';
 import "../../css/viewpost.css";
+import Comments from '@/Components/Comments';
 
 
 const ViewPost = ({ post: postData }) => {
@@ -19,15 +20,7 @@ const ViewPost = ({ post: postData }) => {
             </div>
 
             <CommentBox type="post" id={postData.id}/>
-
-            <div>
-                {
-                    postData.comments.map(comment => <div>
-                        <p>{comment.user_name}</p>
-                        <p>{comment.description}</p>
-                    </div>)
-                }
-            </div>
+            <Comments comments={postData.comments}/>
         </div>
     </AppLayout>
     

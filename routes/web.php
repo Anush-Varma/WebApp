@@ -26,6 +26,7 @@ Route::get('/post/{id}', [PostsController::class, 'view'])->name('post.view');
 
 Route::get('/api/posts', [PostsController::class, 'getPosts'])->name('api.posts');
 Route::get('/api/me/posts', [PostsController::class, 'getMyPosts'])->name('api.me.posts');
+Route::get('/api/comments/replies', [CommentController::class, 'getCommentReplies'])->name('comments.replies');
 
 Route::middleware('auth')->group(function () {
     Route::post('/create', [PostsController::class, 'store'])->name('post.store');

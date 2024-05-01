@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Comments;
@@ -27,9 +28,53 @@ class CommentController extends Controller
             $comment->posts()->attach($post->id);
         } else {
             $parent = Comments::where("id", $request->id)->first();
-            $comment->comments()->attach($parent->id);
+            $comment->commentsParent()->attach($parent->id);
         }
 
-        return redirect('/post/' . $request->id);
+        return redirect()->back();
     }
+
+
+    public function getCommentReplies(Request $request): JsonResponse{
+        $id = $request->query("id");
+
+        $parent = Comments::where("id", $id)->first();
+
+        $children = $parent->commentsChildren()->get();
+
+
+        return JsonResponse::fromJsonString(
+            json_encode([
+                "comments" => $children->map(function($comment) {
+                    return [
+                        "id" => $comment->id,
+                        "description" => $comment->description,
+                        "created_at" => $comment->created_at,
+                        "user_name" => $comment->user->name
+                    ];
+                })
+            ])
+        );
+    }
+
+
+    // public function getComments(Request $request): JsonResponse{
+    //     $limit = $request->query("limit");
+    //     $skip = $request->query("skip");
+    //     
+    //     $comments = Comments::where('tags')->skip($skip)->limit($limit)->get()->map(function($post) {
+    //         return [
+    //             "id" => $post->id,
+    //             "title" => $post->title,
+    //             "description" => $post->description,
+    //             "tags" => $post->tags->pluck('name'),
+    //         ];
+    //     });
+
+    //     return JsonResponse::fromJsonString(
+    //         json_encode([
+    //             "posts" => $posts
+    //         ])
+    //     );
+    // }
 }

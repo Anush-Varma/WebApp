@@ -6,7 +6,7 @@ import { BiCommentDetail } from "react-icons/bi";
 import Button from "./core/Button";
 import { useForm } from "@inertiajs/react";
 
-const CommentBox = ({type, id}) => {
+const CommentBox = ({type, id, onSuccess}) => {
     const { data, setData, post, patch, processing, errors, reset } = useForm({
         id,
         type,
@@ -22,9 +22,15 @@ const CommentBox = ({type, id}) => {
         }
     }, [selected])
 
+    const onClick = () => {
+        setSelected(false);
+    }
+
     useEffect(() => {
-        window.onclick = () => {
-            setSelected(false);
+        window.addEventListener("click", onClick)
+
+        return () => {
+            window.removeEventListener("click", onClick)
         }
     }, [])
 
@@ -37,7 +43,9 @@ const CommentBox = ({type, id}) => {
     }
 
     const submit = (e) => {
-        post("/comment/create");
+        post("/comment/create", {
+            onSuccess
+        });
     }
 
     return <div 
