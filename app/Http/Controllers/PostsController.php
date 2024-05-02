@@ -119,7 +119,7 @@ class PostsController extends Controller
                 "description" => $post->description,
                 "tags" => $post->tags->pluck('name'),
                 "image" => $imageUrl,
-                "isMe" => Auth::user()->id == $post->user_id,
+                "isMe" => Auth::user() ? Auth::user()->id == $post->user_id : false,
                 "comments" => $post->comments->map(function($comment) {
                     return [
                         "id" => $comment->id,

@@ -22,14 +22,25 @@ class DatabaseSeeder extends Seeder
 
         // generate 10 users and 3 posts for each user
         $users = User::factory()->count(10)->has(
-            Posts::factory()->count(3)->hasAttached(
-
-                // Attach 2 tags to each post 
-                // many to many relationship
-                Tags::factory()->count(2) 
-            )
+            Posts::factory()->count(3)
         )->create();
 
+        $loremIpsum = fake()->sentence(5);
+
+        $words = explode(' ', $loremIpsum);
+
+
+        for($i = 1; $i <= 15; $i++) {
+            $post = Posts::where("id", $i)->first();
+
+            for($j = 0; $j <= 2; $j++) {
+                $tag = Tags::firstOrCreate([
+                    'name' => $words[array_rand($words, 1)]
+                ]);
+
+                $post->tags()->syncWithoutDetaching($tag->id);
+            }
+        }
 
         // Generate 5 verified users to represent 
         // one to one relationship
