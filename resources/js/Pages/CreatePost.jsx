@@ -9,7 +9,7 @@ import { useForm } from "@inertiajs/react";
 
 
 const CreatePost = () => {
-    const { data, setData, post, processing, errors, reset } = useForm({
+    const { data, setData, post} = useForm({
         title: '',
         description: '',
         tags: [],

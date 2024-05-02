@@ -8,7 +8,7 @@ import '../../css/profile.css';
 import useScrollLoad from "@/hooks/useScrollLoad";
 
 const UpdateDetails = ({email, name}) => {
-    const { data, setData, post, patch, processing, errors, reset } = useForm({
+    const { data, setData, patch, errors, } = useForm({
         name: name,
         email: email,
     });

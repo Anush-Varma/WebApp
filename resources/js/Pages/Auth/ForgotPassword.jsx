@@ -6,7 +6,7 @@ import "../../../css/center.css"
 import Button from '@/Components/core/Button';
 
 export default function ForgotPassword({ status }) {
-    const { data, setData, post, processing, errors } = useForm({
+    const { data, setData, post } = useForm({
         email: '',
     });
 

@@ -7,7 +7,7 @@ import Button from '@/Components/core/Button';
 import "../../../css/center.css"
 
 const Login = ({ canResetPassword }) => {
-    const { data, setData, post, processing, errors, reset } = useForm({
+    const { data, setData, post, reset } = useForm({
         email: '',
         password: '',
         remember: false,

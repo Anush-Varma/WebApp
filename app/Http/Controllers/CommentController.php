@@ -58,23 +58,4 @@ class CommentController extends Controller
     }
 
 
-    // public function getComments(Request $request): JsonResponse{
-    //     $limit = $request->query("limit");
-    //     $skip = $request->query("skip");
-    //     
-    //     $comments = Comments::where('tags')->skip($skip)->limit($limit)->get()->map(function($post) {
-    //         return [
-    //             "id" => $post->id,
-    //             "title" => $post->title,
-    //             "description" => $post->description,
-    //             "tags" => $post->tags->pluck('name'),
-    //         ];
-    //     });
-
-    //     return JsonResponse::fromJsonString(
-    //         json_encode([
-    //             "posts" => $posts
-    //         ])
-    //     );
-    // }
 }

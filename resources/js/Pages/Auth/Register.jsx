@@ -7,7 +7,7 @@ import Button from '@/Components/core/Button';
 import "../../../css/center.css"
 
 const Register = () => {
-    const { data, setData, post, processing, errors, reset } = useForm({
+    const { data, setData, post,errors, reset } = useForm({
         name: '',
         email: '',
         password: '',

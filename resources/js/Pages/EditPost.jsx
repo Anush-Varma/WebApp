@@ -8,7 +8,7 @@ import TagInput from "@/Components/TagInput";
 import { useForm } from "@inertiajs/react";
 
 const EditPost = (props) => {
-    const { data, setData, post, processing, errors, reset } = useForm({
+    const { data, setData, post} = useForm({
         title: props.post.title,
         description: props.post.description,
         tags: props.post.tags,
