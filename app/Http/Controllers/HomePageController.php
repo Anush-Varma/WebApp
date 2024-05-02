@@ -12,6 +12,8 @@ class HomePageController extends Controller
     public function index(Request $request){
         $limit = 10;
         $tags = $request->query("tags", []);
+        $search = $request->query("search");
+
 
         $tags = is_array($tags) ? $tags : array($tags);
 
@@ -20,6 +22,10 @@ class HomePageController extends Controller
             $posts = Posts::whereHas('tags', function ($query) use($tags) {
                 $query->whereIn('name', $tags);
             })->with("tags");
+
+        $dbRequest = is_null($search) ?
+            $dbRequest :
+            $dbRequest->where("title", "like", "%".$search."%");
         
         $posts = $dbRequest->skip(0)->limit($limit)->get()->map(function($post) {
             return [

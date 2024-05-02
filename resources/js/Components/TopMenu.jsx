@@ -2,7 +2,7 @@ import { IoMdAdd, IoMdSearch } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import React from 'react';
 import '../../css/TopMenu.css';
-import { useForm } from '@inertiajs/react';
+import { router, useForm } from '@inertiajs/react';
 import Input from "./core/Input";
 
 export default function TopMenu(){
@@ -16,6 +16,16 @@ export default function TopMenu(){
         post(route(''))
     }
 
+    const onKeyDown = e => {
+        if(e.key == "Enter") {
+            const baseURL = window.location.origin + window.location.pathname;
+            let url = new URL(baseURL);
+            url.searchParams.append("search", e.target.value);
+
+            router.get(url)
+        }
+    }
+
     return (
         <div className="topRow">
             <div className="leftButtons">
@@ -27,6 +37,7 @@ export default function TopMenu(){
 
             <div className="searchBar">
                 <Input
+                    onKeyDown={onKeyDown}
                     type="text"
                     placeholder="Search"
                     Icon={IoMdSearch}

@@ -6,7 +6,13 @@ import { router } from '@inertiajs/react'
 const Tags = ({tags}) => {
     const addTag = (tag) => {
         let url = new URL(window.location.href);
-        url.searchParams.append("tags[]", tag);
+
+        if(url.searchParams.has("tags[]", tag)){
+            url.searchParams.delete("tags[]", tag);
+        } else {
+            url.searchParams.append("tags[]", tag);
+        }
+        
         router.get(url);
     }
 
