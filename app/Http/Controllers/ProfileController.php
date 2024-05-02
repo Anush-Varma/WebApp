@@ -57,10 +57,10 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function updatePassword(ProfileUpdateRequest $request): RedirectResponse
+    public function updatePassword(Request $request): RedirectResponse
     {
         $request->validate([
-            'oldPassword' => ['required', new UserPassword],
+            'oldPassword' => ['required', new UserPassword(Auth::user()->id)],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
         

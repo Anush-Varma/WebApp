@@ -15,7 +15,7 @@ const UpdateDetails = ({email, name}) => {
     
     const save = (e) => {
         e.preventDefault()
-        patch('/profile')
+        patch('/profile/edit')
     }
 
     return <Form>
@@ -50,11 +50,8 @@ const UpdatePassword = () => {
 
     const save = (e) => {
         e.preventDefault()
-        router.patch('/profile/password', data, {
-            onError(e) {
-                console.log(e)
-            }
-        });
+        
+        patch('/profile/password')
     }
 
     return <Form>
@@ -66,21 +63,21 @@ const UpdatePassword = () => {
             value={data.oldPassword}
             onChange={(e) => setData('oldPassword', e.target.value)}
         />
-        {errors.name && <p style={{ color: "red" }}>{errors.oldPassword}</p>}
+        {errors.oldPassword && <p style={{ color: "red" }}>{errors.oldPassword}</p>}
         <Input
             type="password"
             placeholder="New Password"
             value={data.password}
             onChange={(e) => setData('password', e.target.value)}
         />
-        {errors.name && <p style={{ color: "red" }}>{errors.password}</p>}
+        {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
         <Input
             type="password"
             placeholder="confirm New Password"
             value={data.password_confirmation}
             onChange={(e) => setData('password_confirmation', e.target.value)}
         />
-        {errors.name && <p style={{ color: "red" }}>{errors.password_confirmation}</p>}
+        {errors.password_confirmation && <p style={{ color: "red" }}>{errors.password_confirmation}</p>}
         <Button onClick={save} variant={2}>Save</Button>
     </Form>
 }

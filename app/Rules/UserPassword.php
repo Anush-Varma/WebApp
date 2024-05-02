@@ -9,10 +9,16 @@ use Illuminate\Support\Facades\Hash;
 
 class UserPassword implements Rule
 {
+    private $id;
+
+    public function __construct($id) {
+        $this->id = $id;
+    }
+
     public function passes($attribute, $value)
     {
-        $user = User::where("id", Auth::user()->id)->first();
-        return $user->password == Hash::make($attribute);
+        $user = User::where("id", $this->id)->first();
+        return Hash::check($value, $user->password);
     }
 
     public function message()
