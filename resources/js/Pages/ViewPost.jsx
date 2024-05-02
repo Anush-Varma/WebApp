@@ -3,13 +3,22 @@ import AppLayout from "@/Layouts/AppLayout";
 import CommentBox from '@/Components/CommentBox';
 import "../../css/viewpost.css";
 import Comments from '@/Components/Comments';
+import { MdEdit } from "react-icons/md";
+import { router } from '@inertiajs/react';
 
 
 const ViewPost = ({ post: postData }) => {
     return <AppLayout>
         <div className="viewPost">
             <div className="postContent">
-                <h1>{postData.title}</h1>
+                <div className="header">
+                    <h1>{postData.title}</h1>
+                    {postData.isMe && <MdEdit 
+                        className="edit" 
+                        onClick={() => router.get(`/post/${postData.id}/edit`)}
+                    ></MdEdit>}
+                </div>
+                
                 <hr/>
                 <b>{postData.tags.map(tag => `#${tag}`).join(" ")}</b>
 

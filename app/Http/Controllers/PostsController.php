@@ -106,6 +106,7 @@ class PostsController extends Controller
     public function view(Request $request, $id, S3Service $s3Service) {
         $post = Posts::with(['tags', "comments.user", "image"])->where("id", $id)->first();
 
+        
 
         $imageUrl = is_null($post->image) ? 
             null :
@@ -118,6 +119,7 @@ class PostsController extends Controller
                 "description" => $post->description,
                 "tags" => $post->tags->pluck('name'),
                 "image" => $imageUrl,
+                "isMe" => Auth::user()->id == $post->user_id,
                 "comments" => $post->comments->map(function($comment) {
                     return [
                         "id" => $comment->id,

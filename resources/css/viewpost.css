@@ -30,8 +30,21 @@
 
 .viewPost .postContent h1 {
     margin: 15px 0;
+    flex: 1;
 }
 
 .viewPost .postContent p {
     margin: 10px 0;
+}
+
+.viewPost .header{
+    display: flex;
+    align-items: center;
+}
+
+.viewPost .edit{
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+    
 }

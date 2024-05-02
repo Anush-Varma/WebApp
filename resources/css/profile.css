@@ -3,3 +3,12 @@
     flex-direction: column;
     gap: 10px;
 }
+
+.profileAppLayout .forms {
+    display: flex;
+    gap: 10px;
+}
+
+.profileAppLayout .forms form {
+    flex: 1;
+}

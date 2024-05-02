@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Posts;
 use App\Models\Tags;
+use App\Models\User;
+use App\Rules\UserPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,6 +14,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class ProfileController extends Controller
 {
@@ -52,8 +57,30 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
+    public function updatePassword(ProfileUpdateRequest $request): RedirectResponse
+    {
+        $request->validate([
+            'oldPassword' => ['required', new UserPassword],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+        
+        User::where("id", Auth::user()->id)->update([
+            'password' => Hash::make($request->password),
+        ]);
+
+        return Redirect::to('/profile');
+    }
+
+    /**
+     * Update the user's profile information.
+     */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+        ]);
+
         $request->user()->fill($request->validated());
 
         if ($request->user()->isDirty('email')) {

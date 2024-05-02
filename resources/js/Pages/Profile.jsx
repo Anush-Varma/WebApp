@@ -3,73 +3,108 @@ import Button from "@/Components/core/Button";
 import Form from "@/Components/core/Form";
 import Input from "@/Components/core/Input";
 import AppLayout from "@/Layouts/AppLayout";
-import {useForm } from '@inertiajs/react';
+import {useForm, router} from '@inertiajs/react';
 import '../../css/profile.css';
 import useScrollLoad from "@/hooks/useScrollLoad";
 
-const Profile = ({posts, email, name}) => {
+const UpdateDetails = ({email, name}) => {
     const { data, setData, post, patch, processing, errors, reset } = useForm({
         name: name,
         email: email,
+    });
+    
+    const save = (e) => {
+        e.preventDefault()
+        patch('/profile')
+    }
+
+    return <Form>
+        <h1>Update Details</h1>
+
+        <Input
+            type="text"
+            placeholder="Account Name"
+            value={data.name}
+            onChange={(e) => setData('name', e.target.value)}
+        />
+
+        {errors.name && <p style={{ color: "red" }}>{errors.name}</p>}
+        <Input
+            type="text"
+            placeholder="Email"
+            value={data.email}
+            onChange={(e) => setData('email', e.target.value)}
+        />
+        {errors.name && <p style={{ color: "red" }}>{errors.email}</p>}
+
+        <Button onClick={save} variant={2}>Save</Button>
+    </Form>
+}
+
+const UpdatePassword = () => {
+    const { data, setData, post, patch, processing, errors, reset } = useForm({
+        oldPassword: '',
         password: '',
         password_confirmation: '',
     });
-    
+
+    const save = (e) => {
+        e.preventDefault()
+        router.patch('/profile/password', data, {
+            onError(e) {
+                console.log(e)
+            }
+        });
+    }
+
+    return <Form>
+        <h1>Update Password</h1>
+
+        <Input
+            type="password"
+            placeholder="Old Password"
+            value={data.oldPassword}
+            onChange={(e) => setData('oldPassword', e.target.value)}
+        />
+        {errors.name && <p style={{ color: "red" }}>{errors.oldPassword}</p>}
+        <Input
+            type="password"
+            placeholder="New Password"
+            value={data.password}
+            onChange={(e) => setData('password', e.target.value)}
+        />
+        {errors.name && <p style={{ color: "red" }}>{errors.password}</p>}
+        <Input
+            type="password"
+            placeholder="confirm New Password"
+            value={data.password_confirmation}
+            onChange={(e) => setData('password_confirmation', e.target.value)}
+        />
+        {errors.name && <p style={{ color: "red" }}>{errors.password_confirmation}</p>}
+        <Button onClick={save} variant={2}>Save</Button>
+    </Form>
+}
+
+const Profile = ({posts, email, name}) => {
     const { data: allPosts, onScroll } = useScrollLoad({
         url: "/api/me/posts",
         initialData: posts
     })
 
-    const save = (e) => {
-        patch('/profile')
-    }
-
     const logout = (e) => {
-        post('logout')
+        router.post('logout')
     }
-
 
     return(
         <AppLayout onScroll={onScroll} >
             <div className="profileAppLayout">
-                <Form>
-                    <Input 
-                        type="text"
-                        placeholder="Account Name"
-                        value={data.name}
-                        onChange={(e) => setData('name', e.target.value)} 
-                    />
+                <div className="forms">
+                    <UpdateDetails email={email} name={name}/>
+                    <UpdatePassword/>
+                </div>
 
-                    {errors.name && <p style={{color: "red"}}>{errors.name}</p>}
-                    <Input
-                        type="text"
-                        placeholder="Email"
-                        value={data.email}
-                        onChange={(e) => setData('email', e.target.value)}
-                    />
-
-                    {errors.name && <p style={{color: "red"}}>{errors.email}</p>}
-                    <Input
-                        type="password"
-                        placeholder="New Password"
-                        value={data.password}
-                        onChange={(e) => setData('password', e.target.value)}
-                    />
-
-                    {errors.name && <p style={{color: "red"}}>{errors.password}</p>}
-                    <Input
-                        type="password"
-                        placeholder="Re-Write New Password"
-                        value={data.password_confirmation}
-                        onChange={(e) => setData('password_confirmation', e.target.value)}
-                    />
-                    {errors.name && <p style={{color: "red"}}>{errors.password_confirmation}</p>}
-
-                    <Button onClick={save} className='save' variant={2}>Save</Button>
-
-                    <Button onClick={logout} className='logout' variant={1}>Logout</Button>
-                </Form>
-                <CardContainer className="userCards" data={allPosts}/>
+                <Button onClick={logout} variant={1}>Logout</Button>
+                <CardContainer data={allPosts}/>
             </div>
         </AppLayout>
         
